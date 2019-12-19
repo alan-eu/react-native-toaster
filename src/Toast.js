@@ -5,12 +5,12 @@ import {
   TouchableWithoutFeedback,
   View,
   Text,
-  Platform
+  Platform,
 } from 'react-native'
 import ToastStylesIOS from './ToastStyles.ios.js'
 import ToastStylesAndroid from './ToastStyles.android.js'
 
-const ToastStyles = Platform.OS === 'ios' ? ToastStylesIOS : ToastStylesAndroid;
+const ToastStyles = Platform.OS === 'ios' ? ToastStylesIOS : ToastStylesAndroid
 
 const noop = () => 0
 
@@ -23,7 +23,7 @@ class Toast extends Component {
     height: PropTypes.number,
     onShow: PropTypes.func,
     onHide: PropTypes.func,
-    onPress: PropTypes.func
+    onPress: PropTypes.func,
   }
 
   static defaultProps = {
@@ -32,7 +32,7 @@ class Toast extends Component {
     height: 100,
     onShow: noop,
     onHide: noop,
-    onPress: noop
+    onPress: noop,
   }
 
   state = { animatedValue: new Animated.Value(0), timeoutId: null }
@@ -42,7 +42,7 @@ class Toast extends Component {
   }
 
   componentWillUnmount () {
-    const { timeoutId } = this.state;
+    const { timeoutId } = this.state
     clearTimeout(timeoutId)
   }
 
@@ -87,10 +87,19 @@ class Toast extends Component {
   render () {
     const y = this.state.animatedValue.interpolate({
       inputRange: [0, 1],
-      outputRange: [-this.props.height, 0]
+      outputRange: [-this.props.height, 0],
     })
 
-    const { styles, text } = this.props
+    const { styles } = this.props
+    let text = this.props.text
+
+    if (Object.prototype.toString.call(text) === '[object String]') {
+      text = (
+        <View style={styles.container}>
+          <Text style={styles.text}>{text}</Text>
+        </View>
+      )
+    }
 
     return (
       <Animated.View style={{
@@ -99,12 +108,10 @@ class Toast extends Component {
         right: 0,
         left: 0,
         zIndex: 9999,
-        transform: [{ translateY: y }]
+        transform: [{ translateY: y }],
       }}>
         <TouchableWithoutFeedback onPress={this.onPress}>
-          <View style={styles.container}>
-            <Text style={styles.text}>{text}</Text>
-          </View>
+          {text}
         </TouchableWithoutFeedback>
       </Animated.View>
     )
