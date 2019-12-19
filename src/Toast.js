@@ -4,9 +4,13 @@ import {
   Animated,
   TouchableWithoutFeedback,
   View,
-  Text
+  Text,
+  Platform
 } from 'react-native'
-import ToastStyles from './ToastStyles'
+import ToastStylesIOS from './ToastStyles.ios.js'
+import ToastStylesAndroid from './ToastStyles.android.js'
+
+const ToastStyles = Platform.OS === 'ios' ? ToastStylesIOS : ToastStylesAndroid;
 
 const noop = () => 0
 
