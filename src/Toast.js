@@ -86,16 +86,7 @@ class Toast extends Component {
       outputRange: [-this.props.height, 0]
     })
 
-    const { styles } = this.props
-    let text = this.props.text
-
-    if (Object.prototype.toString.call(text) === '[object String]') {
-      text = (
-        <View style={styles.container}>
-          <Text style={styles.text}>{text}</Text>
-        </View>
-      )
-    }
+    const { styles, text } = this.props
 
     return (
       <Animated.View style={{
@@ -107,7 +98,9 @@ class Toast extends Component {
         transform: [{ translateY: y }]
       }}>
         <TouchableWithoutFeedback onPress={this.onPress}>
-          {text}
+          <View style={styles.container}>
+            <Text style={styles.text}>{text}</Text>
+          </View>
         </TouchableWithoutFeedback>
       </Animated.View>
     )
