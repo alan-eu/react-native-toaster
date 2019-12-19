@@ -1,8 +1,9 @@
 import { StyleSheet } from 'react-native'
+import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 
 export const base = {
   container: {
-    paddingTop: 25,
+    paddingTop: getStatusBarHeight(),
     paddingRight: 15,
     paddingBottom: 15,
     paddingLeft: 15
