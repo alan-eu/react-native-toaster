@@ -37,7 +37,7 @@ class Toast extends Component {
 
   state = { animatedValue: new Animated.Value(0), timeoutId: null }
 
-  componentWillMount () {
+  componentDidMount () {
     this.showToast()
   }
 
@@ -46,7 +46,7 @@ class Toast extends Component {
     clearTimeout(timeoutId)
   }
 
-  componentWillReceiveProps (nextProps) {
+  UNSAFE_componentWillReceiveProps (nextProps) {
     if (this.props.id !== nextProps.id) {
       this.showToast()
     }
