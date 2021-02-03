@@ -58,7 +58,7 @@ class Toast extends Component {
     this.setState({ animatedValue })
 
     Animated
-      .timing(animatedValue, { toValue: 1, duration: 350 })
+      .timing(animatedValue, { toValue: 1, duration: 350, useNativeDriver: true })
       .start()
 
     const { duration, onShow } = this.props
@@ -73,7 +73,7 @@ class Toast extends Component {
     clearTimeout(timeoutId)
 
     Animated
-      .timing(animatedValue, { toValue: 0, duration: 350 })
+      .timing(animatedValue, { toValue: 0, duration: 350, useNativeDriver: true })
       .start()
 
     setTimeout(this.props.onHide, 350)
