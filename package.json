@@ -1,6 +1,6 @@
 {
   "name": "react-native-toaster",
-  "version": "0.0.6",
+  "version": "1.2.3",
   "description": "Simple top-pop toast feedback messages for React Native",
   "main": "src/index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AndriiUhryn/react-native-toaster.git"
+    "url": "git+https://github.com/alan-eu/react-native-toaster.git"
   },
   "keywords": [
     "toast",
@@ -17,15 +17,14 @@
     "poptart",
     "toastr"
   ],
-  "author": "Andrii Uhryn",
+  "author": "TABLEFLIP",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/AndriiUhryn/react-native-toaster/issues"
+    "url": "https://github.com/tableflip/react-native-toaster/issues"
   },
-  "homepage": "https://github.com/AndriiUhryn/react-native-toaster#readme",
+  "homepage": "https://github.com/tableflip/react-native-toaster#readme",
   "dependencies": {
-    "prop-types": "15.6.0",
-    "react-native-iphone-x-helper": "1.2.1"
+    "prop-types": "15.6.0"
   },
   "devDependencies": {
     "babel-eslint": "7.1.1",
